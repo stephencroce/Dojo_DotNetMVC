@@ -1,0 +1,119 @@
+﻿@using StackExchange.Profiling;
+
+@{
+    //this is an experiment using stack exchange's mini profiler to try and understand website performance.  To date, I've had mixed results, so as an alternative I downloaded Red Gate's ANTS profiler Tool, 
+    //which essentially does what you need it to do right out of the box.
+    MiniProfiler.Start();
+    var profiler = MiniProfiler.Current; // it's ok if this is null
+
+    using (profiler.Step("Set page title"))
+    {
+        ViewBag.Title = "Home Page";
+    }
+    //MiniProfiler.Stop();
+}
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">dummy - ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<h4>Bootstrap Bullshit - Here's another navbar:</h4>
+<div class="navbar navbar-inverse container">
+    <div>
+        <a class="brand" href="#">Title</a>
+        <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link</a></li>
+        </ul>
+    </div>
+</div>
+<div style="border:red solid 1px;">
+    ---graphic-start
+    @{
+
+
+
+        using (profiler.Step("Doing complex stuff"))
+        {
+            using (profiler.Step("Step A"))
+            { // something more interesting here
+                System.Threading.Thread.Sleep(100);
+            }
+            using (profiler.Step("Step B"))
+            { // and here
+                System.Threading.Thread.Sleep(250);
+            }
+        }
+
+
+    }
+
+    <div>
+        <b>
+            SVG PLAYGROUND
+        </b>
+    </div>
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="400" width="450">
+            <path id="curveAB" d="M 100 350 q 150 -300 300 0" stroke="blue" stroke-width="5" fill="none" />
+            <!-- Mark relevant points -->
+            <g stroke="black" stroke-width="3" fill="black">
+                <circle id="pointA" cx="100" cy="350" r="3" />
+                <circle id="pointB" cx="400" cy="350" r="3" />
+            </g>
+            <!-- Label the points -->
+            <g font-size="30" font="sans-serif" fill="black" stroke="none" text- anchor="middle">
+                <text x="100" y="350" dx="-30">A</text>
+                <text x="400" y="350" dx="30">B</text>
+            </g>
+        </svg>
+        This one works - why doesn't the previous one work?
+        <svg height="100" width="100">
+            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+            Sorry, your browser does not support inline SVG.
+        </svg>
+        <svg height="400" width="450">
+            <path id="lineAB" d="M 100 350 l 150 -300" stroke="red" stroke-width="3" fill="none" />
+            <path id="lineBC" d="M 250 50 l 150 300" stroke="red" stroke-width="3" fill="none" />
+            <path d="M 175 200 l 150 0" stroke="green" stroke-width="3" fill="none" />
+            <path d="M 100 350 q 150 -300 300 0" stroke="blue" stroke-width="5" fill="none" />
+            <!-- Mark relevant points -->
+            <g stroke="black" stroke-width="3" fill="black">
+                <circle id="pointA" cx="100" cy="350" r="3" />
+                <circle id="pointB" cx="250" cy="50" r="3" />
+                <circle id="pointC" cx="400" cy="350" r="3" />
+            </g>
+            <!-- Label the points -->
+            <g font-size="30" font="sans-serif" fill="black" stroke="none" text-anchor="middle">
+                <text x="100" y="350" dx="-30">A</text>
+                <text x="250" y="50" dy="-10">B</text>
+                <text x="400" y="350" dx="30">C</text>
+            </g>
+            Sorry, your browser does not support inline SVG.
+        </svg>
+    </div>
+    ---graphic-end
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
