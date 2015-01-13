@@ -16,7 +16,7 @@ namespace WebApplicationHack1.Controllers
 
         public ActionResult About()
         {
-            System.Threading.Thread.Sleep(25000);
+            //System.Threading.Thread.Sleep(25000);
             ViewBag.Message = "Your application description page.  This is the viewbag";
             
 
@@ -26,6 +26,13 @@ namespace WebApplicationHack1.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult logSearch()
+        {
+            ViewBag.Message = "Your logSearch.";
 
             return View();
         }
