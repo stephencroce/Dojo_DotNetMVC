@@ -3,5 +3,13 @@
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
+<button onclick="doIt();"></button>
+<input type="button" value="crap" onclick="doIt();" />
+<input id="txtStartDate" maxlength="10" name="StartDate" size="10" style="width: 70px;" type="text">
+<input id="txtEndDate" maxlength="10" name="EndDate" size="10" style="width: 70px;" type="text">
 
-<p>Use this area to provide additional information.</p>
+<script>
+    function doIt() {
+        window.alert('I did it');
+    }
+</script> 

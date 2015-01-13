@@ -168,22 +168,39 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Crap\AngularAppCrap2.js" />
+    <Content Include="Crap\AngularCrap2.html" />
+    <Content Include="Crap\AngularCrap\datepicker2\example.js" />
+    <Content Include="Crap\AngularCrap\datepicker2\index.html" />
+    <Content Include="Crap\AngularCrap\datepicker\app.js" />
+    <Content Include="Crap\AngularCrap\datepicker\datepicker.js" />
+    <Content Include="Crap\AngularCrap\datepicker\index.html" />
+    <Content Include="Crap\AngularCrap.html" />
+    <Content Include="Crap\AngularAppCrap.js" />
+    <Content Include="Crap\AngularCrap\images\kubota.jpg" />
+    <Content Include="Crap\AngularCrap\images\SharkEatingShark.jpg" />
+    <Content Include="Crap\BootstrapCrap\BootstrapCrap.html" />
+    <Content Include="Crap\JavaScriptCrap\JavaScriptCrap.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="JavaScriptCrap\JavaScriptCrap.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -236,9 +253,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\logSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Views\Recipe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

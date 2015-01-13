@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "logSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>logSearch</h2>
+
+this is my log search demo page
+
+<button type="button" value="crap1" onclick="doIt();">crap1</button>
+<input type="button" value="crap2" onclick="doIt();" />
+<input id="txtStartDate" maxlength="10" name="StartDate" size="10" style="width: 70px;" type="text">
+<input id="txtEndDate" maxlength="10" name="EndDate" size="10" style="width: 70px;" type="text">
+<div ng-app="AngularAppStupid">
+    <div ng-controller="HelloWorldController">
+        <p>{{greeting.text}}, World</p>
+    </div>
+    <div ng-controller="JustShootMeController">
+        <p>{{greeting.text}}, World</p>
+    </div>
+</div>
+<script>
+    var app = angular.module("AngularAppStupid", []);
+    function HelloWorldController($scope) { $scope.greeting = { text: 'Hello' }; }
+    function JustShootMeController($scope) {
+        var someText = "this is my country.";
+        $scope.greeting = { text: 'Just shoot me' };
+        $scope.someText = someText;
+    }
+    function doIt() {
+        window.alert('I did it');
+    }
+</script> 
+<script>
+    window.alert('hello there');
+</script>

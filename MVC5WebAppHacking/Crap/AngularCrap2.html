@@ -1,0 +1,23 @@
+﻿<html lang='en' ng-app='stupidapp'>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+
+<body ng-controller="SomeController">
+    <button ng-click="clickUnfocused()">    Not focused  </button>
+
+    <!-- NOTE*** check out how the dashes translate from view to model....-->
+    <button this-camel-case-directive-is-forcing-this-button-to-have-the-focus ng-click="clickFocused()">    HELP - I'm being forced to have the focus by Angular JS!  </button>
+    <div>{{message.text}}</div>
+
+    <h1>Sign Up</h1>
+    <form name='addUserForm' ng-controller="FormValidController">
+        <div>First name: <input ng-model='user.first' required></div>
+        <div>Last name: <input ng-model='user.last' required></div>
+        <div>Email: <input type='email' ng-model='user.email' required></div>
+        <div>Age: <input type='number' ng-model='user.age' ng-maxlength='3' ng-minlength='1'></div>
+        <div><button ng-click="addUser()" ng-disabled="!addUserForm.$valid">Submit</button></div>
+        <div>{{message2}}</div>
+    </form>
+    <script src="AngularAppCrap2.js"></script>
+</body>
+</html>

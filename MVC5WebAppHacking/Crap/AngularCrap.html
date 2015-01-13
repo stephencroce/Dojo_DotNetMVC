@@ -1,0 +1,87 @@
+﻿<html ng-app="AngularAppCrap">
+<head>
+    <title>AngularJS testing crap</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+</head>
+<body>
+    <div ng-controller="HelloWorldController">
+        <p>{{greeting.text}}, World</p>
+    </div>
+    <div ng-controller="CartController">
+        <h4>Here's a shopping cart:</h4>
+        <div>Your Order:</div>
+        <div ng-repeat="thing in things">
+            {{thing.thingname}}, {{thing.thingcost}}, {{thing.thingquantity}}&nbsp;&nbsp;<button ng-click="DeleteThisThang($FindexYYYY)">Remizzle this shizzle</button>
+        </div>
+    </div>
+    <div ng-controller="JustShootMeController">
+        <div>{{greeting.text}}, World</div>
+        <div>{{someText}}</div>
+    </div>
+    <form ng-controller="StartUpController" style="border:1px solid red; padding:10px;">
+        Starting: <input ng-change="computeNeeded()" ng-model="funding.startingEstimate">
+        Recommendation: {{funding.endingEstimate}}
+    </form>
+    <div>Angular HREFS and SRC attribs:</div>
+    <div ng-controller="ImageController">
+        <img style="width:100px;" src="/Crap/AngularCrap/images/kubota.jpg" ng-click="selectImage($this)" />
+        <img style="width:100px;" src="/Crap/AngularCrap/images/sharkeatingshark.jpg" ng-click="selectImage($this)" />
+        <div>
+            which is your favorite image?
+            <!--<img alt="which of the above is your faveImage?" style="width:100px;" src="/Crap/AngularCrap/images/{{faveImage}}" />-->  <!--The WRONG WAY-->
+            <img alt="which of the above is your faveImage?" style="width:100px;" ng-src="/Crap/AngularCrap/images/{{faveImage}}" />  <!--The RIGHT WAY-->
+            <a ng-href="{{pageRef}}">this is an href</a>
+            <a ng-href="{{pageRef}}">{{pageRef}}</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtStartDate").datepicker();
+            $("#txtEndDate").datepicker();
+        });
+    </script>
+    <input id="txtStartDate" maxlength="10" name="StartDate" size="10" style="width: 70px;" type="text">
+    <input id="txtEndDate" maxlength="10" name="EndDate" size="10" style="width: 70px;" type="text">
+    <div ng-controller="ShoppingController">
+        <h2>Shop!</h2>
+        <div>{{test}}</div>
+        <table>
+            <tr ng-repeat="item in items">
+                <td>{{item.title}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.price | currency}}</td>
+            </tr>
+            <tr ng-repeat="thing in things">
+                <td>{{thing.title}}</td>
+                <td>{{thing.description}}</td>
+                <td>{{thing.price | currency}}</td>
+            </tr>
+        </table>
+    </div>
+    <!--<div ng-controller="W3SCountryController">
+        <h2>Places!</h2>
+        <div>{{test}}</div>
+        <table>
+            <tr ng-repeat="item in names">
+                <td>{{item.Name}}</td>
+                <td>{{item.City}}</td>
+                <td>{{item.Country}}</td>
+            </tr>
+        </table>
+    </div>-->
+    <script src="AngularAppCrap.js"></script>
+    <script>
+        //window.alert('just shoot me');
+        function JustShootMeController($scope) {
+            var someText = "this is my country.";
+            $scope.greeting = { text: 'Just shoot me' };
+            $scope.someText = someText;
+        }
+    </script>
+
+</body>
+</html>

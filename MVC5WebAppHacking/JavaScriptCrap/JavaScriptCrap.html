@@ -1,0 +1,48 @@
+﻿<html ng-app>
+<head>
+    <title>AngularJS testing crap</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+</head>
+<body>
+    <div ng-controller="HelloWorldController">
+        <p>{{greeting.text}}, World</p>
+    </div>
+    <div ng-controller="AnonymousFunctionNinjaController">
+        <p>{{greeting.Ninjatext}}, Ninja</p>
+        <a href="#" ng-click="yell()">
+            yell
+        </a>
+    </div>
+    <script>
+        function HelloWorldController($scope) {
+
+            $scope.annoying = "annoying";;
+            //var annoying = "annoying";
+            //scope.annoying = function () {
+            //    return 'annoying';
+            //}
+            //$scope.greeting = { text: 'Hello World' };
+            $scope.greeting = { text: $scope.annoying };
+            //$scope.greeting = { text: annoying };
+
+
+        }
+
+        function AnonymousFunctionNinjaController($scope) {
+            var ninja = {
+                shout: function () {
+                    window.alert('hiiiiyahhh');
+                }
+            };
+            $scope.greeting = {
+                Ninjatext: 'Hello World'
+            };
+
+            $scope.yell = function () { ninja.shout();}
+        }
+    </script>
+</body>

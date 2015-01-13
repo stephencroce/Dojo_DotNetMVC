@@ -15,8 +15,21 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>    
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    
+    
+
 </head>
 <body>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtStartDate").datepicker();
+        $("#txtEndDate").datepicker();
+    });
+    </script>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -38,7 +51,10 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <div style="color:red;">RenderBody() Start</div>
+            @RenderBody()
+        <div style="color:red;">RenderBody() End
+    </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
@@ -50,10 +66,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    @*
-        Looks like you don't need this explicitly:
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    *@
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 </body>
 
 </html>
