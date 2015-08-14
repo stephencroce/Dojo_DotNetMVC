@@ -36,5 +36,13 @@ namespace WebApplicationHack1.Controllers
 
             return View();
         }
+        public ActionResult crapola()
+        {
+            ViewBag.Message = "Crapola";
+
+            return View();
+        }
+
+
     }
 }

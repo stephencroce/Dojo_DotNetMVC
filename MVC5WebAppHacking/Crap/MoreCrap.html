@@ -1,9 +1,54 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <title></title>
+    <title>Canvas gradient test</title>
 </head>
 <body>
-    not as much crap
+    <h1>Canvas gradient test</h1>
+    <button id="mybutton">Change colors</button>
+    <p>
+        <canvas id="MyCanvas" width="600" height="500"> This browser or document mode doesn't support canvas</canvas>
+    </p>
+    <script>
+        var canvas = document.getElementById("MyCanvas");
+        if (canvas.getContext) {  // check for support
+            var ctx = canvas.getContext("2d");
+
+            var gradArray = ["red", "purple", "blue", "green", "yellow", "orange"];
+            var gradient;
+            var temp;
+
+            doGradient();  // get an initial color set on the screen
+
+            function doGradient() {
+                //create a gradient object from the canvas context
+                gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+
+                // Add the colors with fixed stops at 1/5 of the width.
+                gradient.addColorStop("0", gradArray[0]);
+                gradient.addColorStop(".20", gradArray[1]);
+                gradient.addColorStop(".40", gradArray[2]);
+                gradient.addColorStop(".60", gradArray[3]);
+                gradient.addColorStop(".80", gradArray[4]);
+                gradient.addColorStop("1.0", gradArray[5]);
+
+                // Use the gradient.
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 300, 250);
+                ctx.fillRect(250, 300, 600, 500);
+            }
+        }
+
+        document.getElementById("mybutton").addEventListener("click", animate, false);
+
+        function animate() {
+            // rotate the colors by shifting off the bottom of the array,
+            //  and pushing it to the top
+            temp = gradArray.shift();
+            gradArray.push(temp);
+            doGradient();  // redisplay
+        }
+
+    </script>
 </body>
 </html>
