@@ -1,0 +1,62 @@
+<html>
+<head>
+</head>
+<script language="javascript">
+function foo()
+{
+	window.alert('hello');
+	window.alert(foo1());
+	window.alert(foo2());
+	
+	var data=foo1();
+	
+	//How does one access the value "hello bar" from bar:??
+	//http://stackoverflow.com/questions/17635866/get-values-from-object-in-javascript
+	enumerateFoo(foo1());
+	
+//	for(key in data) {
+//    if(data.hasOwnProperty(key)) {
+//       var value = data[key];
+//        window.alert(value);
+//    }
+//}
+
+console.log("foo1 = ", foo1());
+console.log("foo2 = ", foo2());
+	
+}
+function foo1(){
+//this one should return an object.
+	return {
+		bar:"hello bar",
+		bozz:"frobozz mfg company"
+	};
+}
+//this one should return undefined, because it sees the return on its own line and gets confused, lesson being that
+//c# programmers need to watch where they put their squigglies {}.
+function foo2() {
+	return
+	{
+		bar:"hello bar"
+	};
+}
+function enumerateFoo(fooFunction)
+{
+	var data=fooFunction;
+	
+	for(key in data) {
+		if(data.hasOwnProperty(key)) {
+        var value = data[key];
+        window.alert(value);
+    }
+	
+	}
+
+}
+</script>
+<body>
+hello
+<button type="button" onclick='foo();'>foo</button>
+
+</body>
+</html>
