@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseIntegratedPipelineMode>true</IISExpressUseIntegratedPipelineMode>
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -203,6 +204,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="JavaScriptCrap\DavesJavaScriptTest.html" />
     <Content Include="JavaScriptCrap\JavaScriptCrap.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

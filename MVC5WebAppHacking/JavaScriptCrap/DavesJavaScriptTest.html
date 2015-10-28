@@ -2,61 +2,222 @@
 <head>
 </head>
 <script language="javascript">
-function foo()
-{
-	window.alert('hello');
-	window.alert(foo1());
-	window.alert(foo2());
-	
-	var data=foo1();
-	
-	//How does one access the value "hello bar" from bar:??
-	//http://stackoverflow.com/questions/17635866/get-values-from-object-in-javascript
-	enumerateFoo(foo1());
-	
-//	for(key in data) {
-//    if(data.hasOwnProperty(key)) {
-//       var value = data[key];
-//        window.alert(value);
-//    }
-//}
+    function foo() {
+        window.alert('hello');
+        window.alert(foo1());
+        window.alert(foo2());
 
-console.log("foo1 = ", foo1());
-console.log("foo2 = ", foo2());
-	
-}
-function foo1(){
-//this one should return an object.
-	return {
-		bar:"hello bar",
-		bozz:"frobozz mfg company"
-	};
-}
-//this one should return undefined, because it sees the return on its own line and gets confused, lesson being that
-//c# programmers need to watch where they put their squigglies {}.
-function foo2() {
-	return
-	{
-		bar:"hello bar"
-	};
-}
-function enumerateFoo(fooFunction)
-{
-	var data=fooFunction;
-	
-	for(key in data) {
-		if(data.hasOwnProperty(key)) {
-        var value = data[key];
-        window.alert(value);
+        var data = foo1();
+
+        //How does one access the value "hello bar" from bar:??
+        //http://stackoverflow.com/questions/17635866/get-values-from-object-in-javascript
+        enumerateFoo(foo1());
+
+        //	for(key in data) {
+        //    if(data.hasOwnProperty(key)) {
+        //       var value = data[key];
+        //        window.alert(value);
+        //    }
+        //}
+
+        console.log("foo1 = ", foo1());
+        console.log("foo2 = ", foo2());
+
     }
-	
-	}
+    function foo1() {
+        //this one should return an object.
+        return {
+            bar: "hello bar",
+            bozz: "frobozz mfg company"
+        };
+    }
+    //this one should return undefined, because it sees the return on its own line and gets confused, lesson being that
+    //c# programmers need to watch where they put their squigglies {}.
+    function foo2() {
+        return
+        {
+            bar: "hello bar"
+        };
+    }
+    function enumerateFoo(fooFunction) {
+        var data = fooFunction;
 
-}
+        for (key in data) {
+            if (data.hasOwnProperty(key)) {
+                var value = data[key];
+                window.alert(value);
+            }
+
+        }
+
+    }
+</script>
+<script language="javascript">
+    //Q2:  what is 'use strict' and what is the benefit of using it?
+
+    //A:  http://www.w3schools.com/js/js_strict.asp
+
+    //    "use strict";  Defines that JavaScript code should be executed in "strict mode".
+
+    //The "use strict" Directive
+    //    The "use strict" directive is new in JavaScript 1.8.5 (ECMAScript version 5).
+
+    //It is not a statement, but a literal expression, ignored by earlier versions of JavaScript.
+
+    //The purpose of "use strict" is to indicate that the code should be executed in "strict mode".
+
+    //With strict mode, you can not, for example, use undeclared variables.
+
+    //Note	Strict mode is supported in:
+    //    Internet Explorer from version 10. Firefox from version 4.
+    //    Chrome from version 13. Safari from version 5.1. Opera from version 12.
+    //    Declaring Strict Mode
+    //    Strict mode is declared by adding "use strict"; to the beginning of a JavaScript file, or a JavaScript function.
+
+    //    Declared at the beginning of a JavaScript file, it has global scope (all code will execute in strict mode):
+
+    "use strict";   //y will error out.  if you comment out this line, it will not error out.   this is similar to option explicit in VB
+
+    function giveMeX() {
+        var x = 3.14;
+        console.log("x is ", x);
+
+
+        y = 9.99;
+        console.log("y is ", y);
+    }
+</script>
+<script>
+    //Q3:
+    //self-executing anonymous function.   preventing the problem of "littering the global namespace with functions and variables, all tenuously linked to each other
+    //through a combination of rudimentary comments, and potentially unspoken developer knowledge.
+    //http://markdalgleish.com/2011/03/self-executing-anonymous-functions/
+
+    //note the difference between these two functions:
+    function nonSelfExecuting() {
+        console.log('non self-executing.  I need to be attached to an event, like onclick(), and only then will my output show up in the log.');
+    }
+
+    //the parens around this, along with the fact that it has no name denote it as an ANONYMOUS function.  This will not execute.
+    var stupid = (function () {
+        console.log('I am an anonymous function because unlike the function above me, I have no name.  I an NOT not self-executing, so my output will not show up in the log when i run the page');
+    })
+
+    //the (); makes the difference in terms of being self executing.
+    var dumb = (function () {
+        console.log('I am a SELF EXECUTING anonymous function because of the (); and my output will show up in the log when i run the page')
+    })();
+</script>
+<script>
+    //Q4:
+
+    //Anonymous self executing
+    (function () {
+        var fooc = barc = 3;
+                
+        //console.log("fooc = ", fooc);
+        //console.log("barc = ", barc);
+    })();
+
+
+    //the answer is that if the console log statements are placed outside of the function, then they will be out of scope, generating a "Reference Error, fooc is not defined", but if they
+    //are placed inside of the self executing function, everything evaluated to 3.
+    console.log("fooc = ", fooc);
+    console.log("barc = ", barc);
+
+
+    function idiot()
+    {
+        var foob = barb = 3;
+
+        console.log("foob = ", foob);
+        console.log("barb = ", barb);
+
+    }
+
+    //console.log("foob = ", foob);
+    //console.log("barb = ", barb);   
+
+
+</script>
+<script>
+    //Q5
+    function doesitEqualOut() {
+       
+        //window.alert(0 = '0');
+        window.alert(0 == '0');
+        window.alert(0 === '0');
+        //var zero = null;   //try putting in various things for zero, like null, 0, '0', 'null'
+        var zero = new Object;
+        window.alert('the type of var zero is: ' + typeof (zero));
+        window.alert(zero == '0');
+
+    }
+    
+</script>
+<script>
+    //Q6:
+
+    function totalGlobalAnnihilation() {
+        console.log("a");
+        window.setTimeout(function () { console.log("B") }, 1000);
+        window.setTimeout(function () { console.log("C") }, 0);
+        //console.log("C");
+        console.log("d");
+
+        //the question is, will execution continue to c and d while b is delayed, or will it wait.  so will it either be a, b, c, d, or a, c, d, b, or does perhaps the 
+        //wrapping uwint setTimeout cause delay of processing itself, such that it might come out a, d, c, b.   You are asking me how well I understand the behavior of the
+        //javascript interpreter.    I'm guessing it would be a, b, c, d.   
+        
+        //well, i guessed wrong, but my hunch of what it might do was correct, - it comes out adcb, which is sort of like a naturual async
+    }
+
+    function IComeFirstDammit() {
+        setTimeout(function () { alert("Hello, i happen 3 seconds later because i've be setTimeout(ed), even though I am first in the execution order."); }, 3000);
+        window.alert('i come first, dammit, even though I am visibly second in the execution order');
+    }
 </script>
 <body>
-hello
-<button type="button" onclick='foo();'>foo</button>
-
+    hello
+    <div>
+        <p>Q1: What will the following output be and why?</p>
+        <button type="button" onclick='foo();'>A:do this foo (and read the comment in script tags)</button>
+    </div>
+    <div>
+        <p>Q2:  What is 'use strict' and what is the benefit of using it?</p>
+        <button type="button" onclick='giveMeX();'>A:gimme x (and look in console log)</button>
+    </div>
+    <div>
+        <p>Q3:  Why would a developer enclose an entire source file inside a self-executing function?</p>
+        <button type="button" onclick="nonSelfExecuting();">A: call a self executing function (and read comments in script tags)</button>
+        <button type="button" onclick="stupid();">A: call an anonymous non-self-executing function. (and read comments in script tags)</button>
+    </div>
+    <div>
+        <p>Q4:  What would the output of this function be, and why?</p>
+        <p>
+            (function() { <br />
+            var foob = barb= 3; <br />
+            })();
+        </p>
+        <p>
+            console.log("Foob = ", foob); <br />
+            console.log("Barb = ", barb);
+        </p>
+        <button type="button" onclick="idiot();">A: call this function. (and read comments in script tags)</button>
+    </div>
+    <div>
+        <p>Q5:  What issues could occur if you use typeof foo==="object" to determine if foo is an object?</p>
+        <p>A:  obviously testing what you know about equivalence operators in Javascript, and also what you know about the typeOf() function - what is the significance of "==="?</p>
+        <p>Nutshell:<br />  ==	equal to <br />
+===	equal value and equal type</p>
+        <p>and so the answer likely has something to do with nulls</p>
+        <button type="button" onclick="doesitEqualOut();">A: Does it equal out?</button>
+    </div>
+    <div>
+        <p>what will happen if you click this button?</p>
+        <button type="button" onclick="totalGlobalAnnihilation();">A:Total Global Annihiliation</button>
+        <p>how about this one</p>
+        <button type="button" onclick="IComeFirstDammit();">Watch this:  I come first Dammit!</button>
+    </div>
 </body>
 </html>
