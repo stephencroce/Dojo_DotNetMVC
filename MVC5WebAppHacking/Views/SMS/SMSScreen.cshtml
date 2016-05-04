@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+@{
+    ViewBag.Title = "SMSScreen";
+    Layout = "";
+}
+@*<h2>SMSScreen</h2>*@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<div ng-app="myStupidApp" ng-controller="myStupidController" class="container-fluid" style="margin-top:20px;">
+    <div>
+        <div><strong>What type of SMS text alert should be sent?</strong></div>
+        <select id="ddSMSAlertType" ng-multiple="false" ng-model="selectedAlertType" ng-options="s.SMSType for s in SMSAlertTypes" ng-change="manageSMSWordingPreview(selectedAlertType);">
+            <option value="" selected>Choose one:</option>
+        </select>
+        <span class="vaidationNotice" style="color:red; position:relative; top:-5px;" ng-hide="validate()"><strong>*</strong></span>
+        <div><strong>SMS wording preview:</strong></div>
+        <div id="divWordingPreview" class="well well-small">
+            {{wordingPreview}}{{selectedAlertType.SMSMessageWording}}
+        </div>
+    </div>
+
+    <div><strong>Select from list of eligible recipients:</strong></div>
+    <div style="margin-bottom:20px;" class="text-center">
+        <select style="width:100%;" id="ddRecipients" multiple ng-multiple="true" ng-model="selectedRecipients" ng-options="r.contactName +' : '+ r.contactType +' : ' + r.contactPhone for r in recipients"></select>
+        @*Lorem Ipsum = {{test}}*@
+        <div style="font-size:0.5em;">
+            Selected Recipients: {{selectedRecipients}}
+        </div>
+    </div>
+
+    <div id="divActionButtons" class="container text-center">
+        <div class="btn-group">
+            <button id="btnSendNow" type="button" class="btn btn-primary" ng-click="sendNow()">Send Now</button>
+            <button id="btnSaveSettings" type="button" class="btn btn-info" ng-click="saveSettings()">Save Settings</button>
+            <button id="btnCancel" type="button" class="btn btn-default" ng-click="closeWindow()">Cancel</button>
+        </div>
+        <div class="alert-danger container text-center" ng-hide="validate()">You must choose an alert type!</div>
+        <div class="alert-success container text-center" ng-show="SMSTextSent()">SMS text successfully sent!</div>
+        <div class="alert alert-warning"  ng-show="HasWarning()"><strong>Warning!</strong> There was a problem sending the SMS text.  You can press "Send Now" to try again.</div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    var myStupidApp = angular.module('myStupidApp', []);
+
+    myStupidApp.controller('myStupidController', function ($scope, $http) {
+                
+        $scope.wordingPreview = "No selection has been made.";
+
+        //$scope.SMSAlertTypes = [{ SMSTypeID: '0', SMSType: 'Assigned Shop Information', SMSMessageWording: 'CEI Shop Assigment Alert:  Re Claim 1421324 - Your 2011 Chevrolet Impala has been assigned to CollisionMax Trevose, PA 19102' }, { SMSTypeID: '1', SMSType: 'TBD1', SMSMessageWording: 'Leverage agile frameworks to provide a robust synopsis for high level overviews.' }, { SMSTypeID: '2', SMSType: 'TBD2', SMSMessageWording: 'Bring to the table win-win survival strategies to ensure proactive domination.' }];
+        $scope.SMSAlertTypes = {};
+
+
+        //$scope.recipients = [{ contactName: 'Xavier Cougat', contactType: 'Total Loss', contactPhone: '(215) 123-1234' }, { contactName: 'Jenny Jenny', contactType: 'Decision', contactPhone: '(512) 867-5309' }, { contactName: 'Johanna Farms', contactType: 'Claim', contactPhone: '(609) 987-6543' }];
+        //$scope.recipients=null;
+        //$scope.recipients;
+        $scope.recipients = {};
+
+    
+        //$scope.getSMSContacts = function (data) {
+
+        //    $http.post("/SMS/SMSJson").then(
+
+        //        function (data) {                    
+        //            $scope.recipients = data;
+        //            console.log('success:  data was: ' + data);
+        //            console.log("\n stringified data was: " + JSON.stringify(data));
+        //            console.log("\n recipients were: " + $scope.recipients);
+        //            console.log("\n stringified recipients were: " + JSON.stringify($scope.recipients));
+        //        })
+        //    , console.log('dumb');
+
+        //};
+
+        //$scope.getSMSContacts = function () {
+        //    //$http.post("/SMS/GetSMSContacts")
+        //    //$http.post("/SMS/stupid")
+        //    //$http.post("/SMS/GetSMSContactsString")
+        //    $http.post("/SMS/SMSJson")
+        //    .success(function (data, status, headers, config) {
+        //        $scope.recipients = data;
+        //        //$scope.recipients = JSON.parse("["+data+"]");
+        //        //$scope.recipients = JSON.parse(data);
+        //        //$scope.recipients = JSON.stringify(data);
+        //        //$scope.recipients = [{ contactName: 'Xavier Cougat', contactType: 'Total Loss', contactPhone: '(215) 123-1234' }, { contactName: 'Jenny Jenny', contactType: 'Decision', contactPhone: '(512) 867-5309' }, { contactName: 'Johanna Farms', contactType: 'Claim', contactPhone: '(609) 987-6543' }];
+        //        //$scope.recipients = [{ contactName: 'Xavier Cougat', contactType: 'Total Loss', contactPhone: '(215) 123-1234' }, { contactName: 'Jenny Jenny', contactType: 'Decision', contactPhone: '(512) 867-5309' }, { contactName: 'Johanna Farms', contactType: 'Claim', contactPhone: '(609) 987-6543' }]
+                
+        //        ////$scope.recipients = "["+JSON.stringify(data)+"]";  
+        //        //var arrRecipients = new Array();
+        //        //$.map(data, function () {
+        //        //    arrRecipients.push();
+        //        //});
+
+        //        //$scope.recipients = arrRecipients;
+            
+        //          console.log('SUCCESS - data is:' + data);
+        //          console.log("\n stringified data was: " + JSON.stringify(data));
+
+        //        //console.log('SUCCESS - data is:' + $scope.recipients);
+        //    })
+        //    .error(function (data, status, headers, config) {
+        //        switch (status) {
+        //            case 401: {
+        //                $scope.message = "You must be authenticated!"
+        //                break;
+        //            }
+        //            case 500: {
+        //                $scope.message = "Something went wrong!";
+        //                break;
+        //            }
+        //            //default:
+        //            //    alert(status);
+        //        }
+        //        console.log(data, status);
+        //    });
+        //};
+
+
+        $scope.getSMSContacts = function () {
+            var recips
+            $http({
+                method: 'GET',
+                url: '/SMS/GetSMSContacts2',
+                //url: '/SMS/SMSJson',
+                //data: {}
+            }).success(function (result) {
+                $scope.recipients = result;
+                $scope.selectedRecipients = [$scope.recipients[0]];  //pre-selects the first item in array                 
+                console.log($scope.recipients);
+            });
+
+        };
+        $scope.getSMSContacts();
+
+        $scope.getSMSAlertChoices = function () {
+
+            $http({
+                method: 'GET',
+                url: '/SMS/GetSMSTextAlertTypes',
+                //url: '/SMS/SMSJson',
+                //data: {}
+            }).success(function (result) {
+                $scope.SMSAlertTypes = result;
+                console.log($scope.SMSAlertTypes);
+            });
+
+        };
+        $scope.getSMSAlertChoices();
+                               
+        $scope.selectedRecipients = [$scope.recipients[0]];
+
+        $scope.closeWindow = function () {
+            $(window.close());
+        }
+
+        $scope.manageSMSWordingPreview = function (selectedAlertType) {
+            //window.alert(stupid.wordingPreview);
+            console.log(selectedAlertType == null);
+            if (selectedAlertType == null) {
+                $scope.wordingPreview = "No selection has been made.";
+                sendSMSTextSuccess = false;
+            }
+            else {
+                $scope.wordingPreview = null
+            }
+
+        }
+
+        $scope.validate = function () {
+            isValid = $scope.selectedRecipients.length > 0 && $scope.selectedAlertType != null;
+            return isValid;
+        }
+
+        $scope.saveSettings = function () {
+            //console.log('isValid=  ' + $scope.isValid);
+            //console.log('validate=  ' + $scope.validate.isValid);
+            var isValid = $scope.validate();
+            console.log('isValid is ' + isValid);
+            if (isValid) {
+                //make ajax call to mvc controller method
+                $scope.closeWindow();
+            } else {
+                //window.alert('sorry, cant save');
+            }
+
+        }
+        var sendSMSTextSuccess = false;
+        var hasWarning = false;
+
+        $scope.SMSTextSent = function () {
+            return sendSMSTextSuccess;
+        }
+
+        $scope.HasWarning = function () {
+            return hasWarning;
+        }
+        
+
+        $scope.sendNow = function () {
+            var isValid = $scope.validate();            
+            console.log('isValid is ' + isValid);
+            if (isValid) {
+                //make ajax call to mvc controller method
+                //$scope.SMSTextSent = true;
+                //url: '/SMS/Send_SMSTextNow?type=SMSType&wording=Wording&recipients=Recipients',
+
+                $http({
+                    method: 'POST',
+                    //url: '/SMS/Send_SMSTextNow?type=SMSType&wording=Wording&recipients=Recipients'
+                    url: '/SMS/SendSMSTextNow?type=SMSType&wording=Wording&recipients=Recipients'
+                }).then(function successCallback(response) {
+                    // this callback will be called asynchronously
+                    // when the response is available
+                    console.log("all good - response was: " + JSON.stringify(response) + "\n response.data was: "+ response.data + "::" + JSON.stringify(response.data) + ":::"+ JSON.parse(response.data));
+                    //didTextMethodSucceed = JSON.stringify(response.data);
+                    //window.alert(response.data + "::" + Boolean(response.data.Boolean));
+                    //sendSMSTextSuccess = Boolean(response.data.Boolean);
+                    sendSMSTextSuccess = JSON.parse(response.data);
+                    hasWarning = !(JSON.parse(response.data));
+
+                }, function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    console.log("bad stuff");
+                    hasWarning = true;
+                });
+
+
+                
+                //display a green ok success marker.         
+                // sendSMSTextSuccess = true;
+           
+                //$scope.closeWindow();
+            }
+            else {
+                sendSMSTextSuccess = false;
+                //window.alert('sorry, cant send');
+            }
+        }
+    });
+</script>
+
+
+
