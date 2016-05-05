@@ -169,7 +169,10 @@
         }
 
         $scope.validate = function () {
-            isValid = $scope.selectedRecipients.length > 0 && $scope.selectedAlertType != null;
+            //http://james.padolsey.com/javascript/truthy-falsey/
+            console.log("selectedRecipients.length is: " + $scope.selectedRecipients.length + "\n selectedAlertType is: " + $scope.selectedAlertType + "\n Boolean($scope.selectedAlertType) is: " + Boolean($scope.selectedAlertType));
+            //isValid = $scope.selectedRecipients.length > 0 && $scope.selectedAlertType != null;
+            isValid = $scope.selectedRecipients.length > 0 && Boolean($scope.selectedAlertType);
             return isValid;
         }
 

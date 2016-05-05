@@ -25,6 +25,10 @@
 
         function ShowSMSTextDialog() {
             var orgStructureId = 12345;
+            //window.open('http://www.zombo.com');
+            //window.showModalDialog('http://www.zombo.com', '', 'dialogHeight:400px;dialogWidth:490px;center:yes;edge:sunken;resizable:yes;scroll:yes;unadorned:yes;status:no;');                
+            //window.showModalDialog('/common/Dialogs/SMSText.aspx?Mode=SMSText&OrgStructureID='  + orgStructureId, '', 'dialogHeight:400px;dialogWidth:490px;center:yes;edge:sunken;resizable:yes;scroll:yes;unadorned:yes;status:no;');                
+            //window.showModalDialog('/Home/Stupid/?Mode=SMSText&OrgStructureID='  + orgStructureId,'', 'dialogHeight:500px;dialogWidth:490px;center:yes;edge:sunken;resizable:yes;scroll:yes;unadorned:yes;status:no;');                
             window.showModalDialog('/SMS/SMSScreen/?Mode=SMSText&OrgStructureID=' + orgStructureId, '', 'dialogHeight:550px;dialogWidth:550px;center:yes;edge:sunken;resizable:yes;scroll:no;unadorned:yes;status:no;');
         }
 
