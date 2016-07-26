@@ -1,6 +1,6 @@
 ﻿var app = angular.module("AngularAppCrap", []);
 
-function HelloWorldController($scope) { $scope.greeting = { text: 'Hello World' }; }
+function HelloWorldController($scope) { $scope.greeting = { text: 'Hello Stupid Idiot' }; }
 
 function CartController($scope) {
 	$scope.things =
@@ -16,9 +16,10 @@ function CartController($scope) {
 			thingquantity: 6
 		},
 		{
-			thingname: 'shoes',
-			thingcost: '35',
-			thingquantity: 7
+		    thingname: 'shoes',
+		    thingcost: '35',
+		    thingquantity: 7
+		}
 			];
 	$scope.DeleteThisThang = function (indexXX) {
 		//window.alert('I will DeleteThisThang...');

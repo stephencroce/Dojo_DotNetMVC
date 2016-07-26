@@ -1,9 +1,44 @@
 ﻿
 @{
-    ViewBag.Title = "crapola";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "crapola";
+
 }
 
 <h2>crapola</h2>
+<div id="doofus" ng-app="myApp" style="border:dashed green 1px;">
+    <p>
+        here is some angular routing crap - See if you can get it to work.  http://www.w3schools.com/angular/angular_routing.asp
+    </p>
+    <p><a href="#/">Main</a></p>
+    <a href="#red">Red</a>
+    <a href="#green">Green</a>
+    <a href="#blue">Blue</a>
+    <div ng-view></div>
+</div>
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "/Crap/crap.html"
+    })
+    .when("/red", {
+        templateUrl : "/Crap/red.html"
+    })
+    .when("/green", {
+        templateUrl : "/Crap/green.aspx"
+    })
+    .when("/blue", {
+        templateUrl: "/Home"
+
+    })
+    .otherwise({ redirectTo: 'crapola.cshtml' });
+
+    ;
+});
+</script>
 
 The easiest way to display the Add View dialog is to right-click in an action method - Wrox MVC5 Chap 2, p60
+
+@Html.Raw(ViewBag.Crapola)

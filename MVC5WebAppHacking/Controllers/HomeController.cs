@@ -38,10 +38,28 @@ namespace WebApplicationHack1.Controllers
         }
         public ActionResult crapola()
         {
+            int ClaimId = 1263589;
+            int UserId = 5664498;  //scroce
+            int DomainId = 54321;
+            int TimeZoneId = 12;
+            int LocaleId = 13;
+            int ApplicationId = 30;
+            WebApplicationHack1.net.intelliclaim.webservices.LossNotice LN = new WebApplicationHack1.net.intelliclaim.webservices.LossNotice();
+
+            //XSLT LossNotice Bullshit
+            //string crapola = LN.GetLossNotice(UserId, DomainId, TimeZoneId, LocaleId, ApplicationId, ClaimId, "C:\\CEI\\TFS\\Claimslink\\DEV\\ICWebServices\\Branding\\Default\\LossNotice.xslt");
+            //string crapola = LN.GetLossNotice(UserId, DomainId, TimeZoneId, LocaleId, ApplicationId, ClaimId, "C:\\git\\MVC5WebAppHacking\\MVC5WebAppHacking\\CEICrap\\xslt\\Branding\\Default\\LossNotice.xslt");
+            //string crapola = LN.GetLossNotice(UserId, DomainId, TimeZoneId, LocaleId, ApplicationId, ClaimId, string.Empty);
+            
+
+
+
             ViewBag.Message = "Crapola";
+            //ViewBag.Crapola = crapola;
 
             return View();
         }
+        
 
 
     }

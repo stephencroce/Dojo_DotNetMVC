@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetLossNotice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="domainID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeZoneID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="localeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="claimID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="coBrandingDirectory" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLossNoticeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLossNoticeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionHeader" type="tns:SessionHeader" />
+      <s:complexType name="SessionHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetLossNoticeHeader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="domainID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeZoneID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="localeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="claimID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="coBrandingDirectory" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="employeeName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLossNoticeHeaderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLossNoticeHeaderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLossNoticeAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="domainID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeZoneID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="localeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="claimID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="coBrandingDirectory" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="employeeName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLossNoticeAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLossNoticeAllResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FNOLHeader" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLossNoticeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLossNotice" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLossNoticeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHeaderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLossNoticeHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHeaderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLossNoticeHeaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHeaderSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeAllSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLossNoticeAll" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeAllSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLossNoticeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeAllSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHttpGetIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="domainID" type="s:string" />
+    <wsdl:part name="timeZoneID" type="s:string" />
+    <wsdl:part name="localeID" type="s:string" />
+    <wsdl:part name="applicationID" type="s:string" />
+    <wsdl:part name="claimID" type="s:string" />
+    <wsdl:part name="coBrandingDirectory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHeaderHttpGetIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="domainID" type="s:string" />
+    <wsdl:part name="timeZoneID" type="s:string" />
+    <wsdl:part name="localeID" type="s:string" />
+    <wsdl:part name="applicationID" type="s:string" />
+    <wsdl:part name="claimID" type="s:string" />
+    <wsdl:part name="coBrandingDirectory" type="s:string" />
+    <wsdl:part name="employeeName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHeaderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHttpPostIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="domainID" type="s:string" />
+    <wsdl:part name="timeZoneID" type="s:string" />
+    <wsdl:part name="localeID" type="s:string" />
+    <wsdl:part name="applicationID" type="s:string" />
+    <wsdl:part name="claimID" type="s:string" />
+    <wsdl:part name="coBrandingDirectory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHeaderHttpPostIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="domainID" type="s:string" />
+    <wsdl:part name="timeZoneID" type="s:string" />
+    <wsdl:part name="localeID" type="s:string" />
+    <wsdl:part name="applicationID" type="s:string" />
+    <wsdl:part name="claimID" type="s:string" />
+    <wsdl:part name="coBrandingDirectory" type="s:string" />
+    <wsdl:part name="employeeName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLossNoticeHeaderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="LossNoticeSoap">
+    <wsdl:operation name="GetLossNotice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Call to generate a Loss Notice in HTML. For coBrandingDirectory: default to a zero-length string for the default stylesheets; otherwise pass the specific co-branding directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetLossNoticeSoapIn" />
+      <wsdl:output message="tns:GetLossNoticeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeHeader">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Call to generate a Loss Notice Header in HTML. For coBrandingDirectory: default to a zero-length string for the default stylesheets; otherwise pass the specific co-branding directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetLossNoticeHeaderSoapIn" />
+      <wsdl:output message="tns:GetLossNoticeHeaderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeAll">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Call to generate a Loss Notice and the Loss Notice Header in HTML. For coBrandingDirectory: default to a zero-length string for the default stylesheets; otherwise pass the specific co-branding directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetLossNoticeAllSoapIn" />
+      <wsdl:output message="tns:GetLossNoticeAllSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LossNoticeHttpGet">
+    <wsdl:operation name="GetLossNotice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Call to generate a Loss Notice in HTML. For coBrandingDirectory: default to a zero-length string for the default stylesheets; otherwise pass the specific co-branding directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetLossNoticeHttpGetIn" />
+      <wsdl:output message="tns:GetLossNoticeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeHeader">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Call to generate a Loss Notice Header in HTML. For coBrandingDirectory: default to a zero-length string for the default stylesheets; otherwise pass the specific co-branding directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetLossNoticeHeaderHttpGetIn" />
+      <wsdl:output message="tns:GetLossNoticeHeaderHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LossNoticeHttpPost">
+    <wsdl:operation name="GetLossNotice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Call to generate a Loss Notice in HTML. For coBrandingDirectory: default to a zero-length string for the default stylesheets; otherwise pass the specific co-branding directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetLossNoticeHttpPostIn" />
+      <wsdl:output message="tns:GetLossNoticeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeHeader">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Call to generate a Loss Notice Header in HTML. For coBrandingDirectory: default to a zero-length string for the default stylesheets; otherwise pass the specific co-branding directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetLossNoticeHeaderHttpPostIn" />
+      <wsdl:output message="tns:GetLossNoticeHeaderHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LossNoticeSoap" type="tns:LossNoticeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLossNotice">
+      <soap:operation soapAction="http://tempuri.org/GetLossNotice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLossNoticeSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeHeader">
+      <soap:operation soapAction="http://tempuri.org/GetLossNoticeHeader" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLossNoticeHeaderSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeAll">
+      <soap:operation soapAction="http://tempuri.org/GetLossNoticeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLossNoticeAllSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LossNoticeSoap12" type="tns:LossNoticeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLossNotice">
+      <soap12:operation soapAction="http://tempuri.org/GetLossNotice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLossNoticeSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeHeader">
+      <soap12:operation soapAction="http://tempuri.org/GetLossNoticeHeader" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLossNoticeHeaderSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeAll">
+      <soap12:operation soapAction="http://tempuri.org/GetLossNoticeAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLossNoticeAllSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LossNoticeHttpGet" type="tns:LossNoticeHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetLossNotice">
+      <http:operation location="/GetLossNotice" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeHeader">
+      <http:operation location="/GetLossNoticeHeader" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LossNoticeHttpPost" type="tns:LossNoticeHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetLossNotice">
+      <http:operation location="/GetLossNotice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLossNoticeHeader">
+      <http:operation location="/GetLossNoticeHeader" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LossNotice">
+    <wsdl:port name="LossNoticeSoap" binding="tns:LossNoticeSoap">
+      <soap:address location="http://webservices.intelliclaim.net/LossNotice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LossNoticeSoap12" binding="tns:LossNoticeSoap12">
+      <soap12:address location="http://webservices.intelliclaim.net/LossNotice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LossNoticeHttpGet" binding="tns:LossNoticeHttpGet">
+      <http:address location="http://webservices.intelliclaim.net/LossNotice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LossNoticeHttpPost" binding="tns:LossNoticeHttpPost">
+      <http:address location="http://webservices.intelliclaim.net/LossNotice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
