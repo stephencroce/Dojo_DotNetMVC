@@ -223,9 +223,11 @@
     <Content Include="Crap\BootstrapCrap\BootstrapCrap.html" />
     <Content Include="Crap\BootstrapCrap\BootstrapCrap-CodeSchool.html" />
     <Content Include="Crap\crap.html" />
+    <Content Include="Crap\HTCCrap\HTCCrap.html" />
     <Content Include="Crap\JavaScriptCrap\JavaScriptCrap.html" />
     <Content Include="Crap\MoreCrap.html" />
     <Content Include="Crap\green.aspx" />
+    <Content Include="Crap\HTCCrap\StupidHTC.htc" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

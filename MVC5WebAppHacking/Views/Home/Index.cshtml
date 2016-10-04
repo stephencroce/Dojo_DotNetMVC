@@ -1,7 +1,7 @@
 ﻿@using StackExchange.Profiling;
 
 @{
-    //this is an experiment using stack exchange's mini profiler to try and understand website performance.  To date, I've had mixed results, so as an alternative I downloaded Red Gate's ANTS profiler Tool, 
+    //this is an experiment using stack exchange's mini profiler to try and understand website performance.  To date, I've had mixed results, so as an alternative I downloaded Red Gate's ANTS profiler Tool,
     //which essentially does what you need it to do right out of the box.
     MiniProfiler.Start();
     var profiler = MiniProfiler.Current; // it's ok if this is null
@@ -12,6 +12,57 @@
     }
     //MiniProfiler.Stop();
 }
+<style>
+    /*STUPID HTC CRAP
+    http://stackoverflow.com/questions/10767006/what-is-htc-file-how-it-works-in-internet-explorer
+    https://en.wikipedia.org/wiki/MSXML
+    https://msdn.microsoft.com/en-us/library/ms531079(v=vs.85).aspx
+    http://samples.msdn.microsoft.com/workshop/samples/author/behaviors/hilite1.htm
+    http://samples.msdn.microsoft.com/workshop/samples/author/behaviors/hilite2.htm
+    http://samples.msdn.microsoft.com/workshop/samples/author/behaviors/hilite.htc*/
+    #stupidHTC LI {
+        color: lightblue;
+        behavior: url(/Crap/HTCCrap/StupidHTC.htc);
+    }
+</style>
+
+<div style="border:dotted blue 2px; padding:5px;">
+    <div>
+        disable mutli-click of these buttons:
+    </div>
+    <div>
+        <button type="button" class="bntWf disableMultiClick" id="bntUnWatch">Un-Watch</button>
+        <button type="button" class="bntWf disableMultiClick" id="bntWatch">Watch</button>
+        <button type="button" class="bntWf disableMultiClick" id="bntCWFRollBack">Roll Back</button>
+        <button type="button" class="bntWf disableMultiClick" id="bntCWFRevive">Revive</button>
+        <button type="button" class="bntWf disableMultiClick" id="bntCWFCancel">Cancel</button>
+        <button type="button" class="bntWf disableMultiClick" id="bntCWFReschedule">Reschedule</button>
+        <button type="button" class="bntWf disableMultiClick" id="bntCWFOpen">Open</button>
+        <button type="button" class="bntWf disableMultiClick" id="bntCWFHistory">View History</button>
+    </div>
+    <div id="nuthin" style="font-size:0.8em; color:green;">
+        http://debug.client.na.intelliclaim.net/claims/controls/workflow/rollback.aspx?ClaimId=1564561&ClaimWorkFlowID=17456471&DueDate=4/6/2016%2003:36:47%20PM&1475174871940&dt=1475174871940
+    </div>
+</div>
+<div style="border:dashed red 2px;">
+    <hr />
+    <DIV id="stupidHTC">
+        HTC leverages the deprecated "behavior" property of css that only IE 5-9 understands.  The actual behaviors are stored in the htc file as a mixture of xml, js and html
+        <div style="text-align:center; color:darkblue; font-weight:bolder;">HTC Crap - IMPORTANT - IT ONLY WORKS IN IE5-IE9-So you have to use the ie emulator</div>
+        <P>
+            Mouse over the two list items below to see this effect, and then examine in the code how annoyingly it's implemented
+            using an old deprecated **IE specific** pattern called HTC.  It should turn <span style="color:red;">red</span>
+        </P>
+        <ul>
+            <li>HTML Authoring </li>
+            <li>Dynamic HTML </li>
+            <li STYLE="behavior:url(/Crap/HTCCrap/StupidHTC.htc)">inline example</li>
+        </ul>
+
+    </DIV>
+    <hr />
+</div>
+
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">dummy - ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
@@ -19,7 +70,7 @@
 </div>
 <h4>Bootstrap Bullshit - Here's another navbar:</h4>
 <div class="navbar navbar-inverse container">
-    <div>
+    <div id="stupidHTC">
         <a class="brand" href="#">Title</a>
         <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
@@ -118,3 +169,52 @@ I added this as a test to git
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+<script>
+    var theButtons = document.getElementsByClassName("disableMultiClick");
+
+    var count = 0;
+
+    for (var b = 0; b < theButtons.length; b++) {
+        var button = theButtons[b];
+        button.addEventListener('click', disableMultiCLick, false);
+    }
+
+    for (var b = 0; b < theButtons.length; b++) {
+        var button = theButtons[b];
+        button.addEventListener('click', doStuff, false);
+    }
+
+    function disableMultiCLick() {
+        var theButtonToDisable = this;
+        theButtonToDisable.innerHTML = '<span class="ui-button-text">Submitting...</span>';
+        theButtonToDisable.style.backgroundColor = '#ffe6e6';
+        theButtonToDisable.disabled = true;
+        console.log(this.id + ' was disabled.')
+    }
+
+
+    //also try removing the click event listener as an alternative way to disable
+
+    function doStuff() {
+        var elmHtml = document.getElementById("nuthin").innerHTML;
+        if (count == 0) {
+            elmHtml = "";
+        }
+        document.getElementById("nuthin").innerHTML = elmHtml + this.id;
+        count++;
+        window.open('http://www.zombo.com', "ZomboWindow" + count, "width=200,height=100");
+
+    }
+
+    function enumerateButtonIds(buttonArray) {
+        var arr = Array.prototype.slice.call(buttonArray)
+        for (var a = 0; a < arr.length; a++) {
+            console.log((a + 1) + '. button id= ' + arr[a].id);
+        }
+    }
+    //info: and debugging:
+    console.log('disableMultiClick successfully added to this page');
+    console.log('buttonsToDisable:' + theButtons);
+    console.log('script sees the following ' + theButtons.length + ' buttons on which to disable multi-click:');
+    enumerateButtonIds(theButtons);
+</script>

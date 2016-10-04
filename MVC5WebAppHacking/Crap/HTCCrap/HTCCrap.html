@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        /*STUPID HTC CRAP            
+        http://stackoverflow.com/questions/10767006/what-is-htc-file-how-it-works-in-internet-explorer
+        https://en.wikipedia.org/wiki/MSXML
+        https://msdn.microsoft.com/en-us/library/ms531079(v=vs.85).aspx
+        http://samples.msdn.microsoft.com/workshop/samples/author/behaviors/hilite1.htm
+        http://samples.msdn.microsoft.com/workshop/samples/author/behaviors/hilite2.htm
+        http://samples.msdn.microsoft.com/workshop/samples/author/behaviors/hilite.htc*/
+        #stupidHTC LI {
+            color: lightblue;
+            behavior: url(StupidHTC.htc);
+        }
+    </style>
+</head>
+<body>
+    <div style="border:dashed red 2px;">
+        <hr />
+        HTC leverages the deprecated "behavior" property of css that only IE 5-9 understands,  The actual behaviors are stored in the htc file as a mixture of xml, js and html
+        <DIV id="stupidHTC">
+            <div style="text-align:center; color:darkblue; font-weight:bolder;">HTC Crap - IMPORTANT - IT ONLY WORKS IN IE5-IE9-So you have to use the ie emulator</div>
+            <P>
+                Mouse over the two list items below to see this effect, and then examine in the code how annoyingly it's implemented
+                using an old deprecated **IE specific** pattern called HTC.  It should turn <span style="color:red;">red</span>
+            </P>
+            <ul>
+                <li>HTML Authoring </li>
+                <li>Dynamic HTML </li>
+                <li STYLE="behavior:url(StupidHTC.htc)">inline example</li>
+            </ul>
+        </DIV>
+        <hr />
+    </div>
+
+</body>
+</html>
