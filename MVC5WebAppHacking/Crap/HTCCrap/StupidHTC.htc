@@ -1,12 +1,26 @@
-﻿<public:component urn="urn:msdn-microsoft-com:workshop">
+﻿
+<public:component urn="urn:msdn-microsoft-com:workshop">
     <!--this is shit that only ie 5-9 understands-->
    <PUBLIC:ATTACH EVENT="onmouseover" ONEVENT="Hilite()" />
    <PUBLIC:ATTACH EVENT="onmouseout"  ONEVENT="Restore()"  />
 
    <SCRIPT LANGUAGE="JScript">
 
-       //this would alert three times as it attaches itself to 3 different li elements.
-       //window.alert('hello from htc');
+       ////this would alert three times as it attaches itself to 3 different li elements.
+       ////window.alert('hello from htc');
+       //var message = 'hello from htc file.';
+       //console.log('this is a message: ' + message);
+       //console.log('element is: ' + element);
+       //console.log(element);
+       //console.log('Element is: ' + Element);
+       //console.log(Element);
+       //var test = element.document.createElement('SPAN');
+       //test.innerHtml = "hellospan";
+       //console.log('test is: ' + test);
+       //console.log(test);
+
+
+       
 
        var normalColor, normalSpacing;
 
@@ -25,3 +39,4 @@
 
    </SCRIPT>
 </public:component>
+

@@ -28,7 +28,7 @@
 
 <div style="border:dotted blue 2px; padding:5px;">
     <div>
-        disable mutli-click of these buttons:
+        disable mutli-click of these buttons implemented as an html button:
     </div>
     <div>
         <button type="button" class="bntWf disableMultiClick" id="bntUnWatch">Un-Watch</button>
@@ -39,6 +39,13 @@
         <button type="button" class="bntWf disableMultiClick" id="bntCWFReschedule">Reschedule</button>
         <button type="button" class="bntWf disableMultiClick" id="bntCWFOpen">Open</button>
         <button type="button" class="bntWf disableMultiClick" id="bntCWFHistory">View History</button>
+    </div>
+    <div>
+        disable mutli-click of these buttons implemented as an html input:
+    </div>
+    <div>
+        <INPUT id="LetterWizard_Step_bntSend" class="disableMultiClick" type="submit" value="Send" name="LetterWizard:Step:bntSend" />
+        <INPUT onclick="CloseDialog(false);" id="LetterWizard_Step_bntCancel" class="disableMultiClick" language="javascript" type="submit" value="Cancel" name="LetterWizard:Step:bntCancel" />
     </div>
     <div id="nuthin" style="font-size:0.8em; color:green;">
         http://debug.client.na.intelliclaim.net/claims/controls/workflow/rollback.aspx?ClaimId=1564561&ClaimWorkFlowID=17456471&DueDate=4/6/2016%2003:36:47%20PM&1475174871940&dt=1475174871940
@@ -169,31 +176,58 @@ I added this as a test to git
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+<div class="myClass">
+    hello myclass
+</div>
 <script>
-    var theButtons = document.getElementsByClassName("disableMultiClick");
+    //console.log('disable script start');
+    $(".myClass").css("border", "3px solid blue");
+
+    var docCompatMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
+    console.log(document.compatMode);
+
+    //if (docCompatMode != 'Quirks') {
+
+    //doesn't work in ie 7/quirks mode
+    //var theButtons = document.getElementsByClassName("disableMultiClick");
+
+    var theButtons = $(".disableMultiClick");
+    console.log(theButtons);
 
     var count = 0;
 
-    for (var b = 0; b < theButtons.length; b++) {
-        var button = theButtons[b];
-        button.addEventListener('click', disableMultiCLick, false);
-    }
+    //doesn't work in ie 7/quirks mode
+    //for (var b = 0; b < theButtons.length; b++) {
+    //    var button = theButtons[b];
+    //    button.addEventListener('click', disableMultiCLick, false);
+    //}
 
-    for (var b = 0; b < theButtons.length; b++) {
-        var button = theButtons[b];
-        button.addEventListener('click', doStuff, false);
-    }
+    $(".disableMultiClick").on("click", function () {
+        disableMultiCLick(this);
+    });
 
-    function disableMultiCLick() {
-        var theButtonToDisable = this;
+    //doesn't work in ie 7/quirks mode
+    //for (var b = 0; b < theButtons.length; b++) {
+    //    var button = theButtons[b];
+    //    button.addEventListener('click', doStuff, false);
+    //}
+
+    $(".disableMultiClick").on("click", function () {
+        doStuff();
+    });
+
+    //console.log('disable script end');
+
+    function disableMultiCLick(theButtonToDisable) {
+        //var theButtonToDisable = this;
         theButtonToDisable.innerHTML = '<span class="ui-button-text">Submitting...</span>';
         theButtonToDisable.style.backgroundColor = '#ffe6e6';
         theButtonToDisable.disabled = true;
-        console.log(this.id + ' was disabled.')
+        // console.log(this.id + ' was disabled.')
+        console.log(theButtonToDisable.id + ' was disabled.')
     }
 
-
-    //also try removing the click event listener as an alternative way to disable
+    //DaveG:  also try removing the click event listener as an alternative way to disable
 
     function doStuff() {
         var elmHtml = document.getElementById("nuthin").innerHTML;
@@ -212,7 +246,9 @@ I added this as a test to git
             console.log((a + 1) + '. button id= ' + arr[a].id);
         }
     }
+
     //info: and debugging:
+    console.log('the browser is in ' + (document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks') + ' mode.');  //http://stackoverflow.com/questions/627097/how-to-tell-if-a-browser-is-in-quirks-mode
     console.log('disableMultiClick successfully added to this page');
     console.log('buttonsToDisable:' + theButtons);
     console.log('script sees the following ' + theButtons.length + ' buttons on which to disable multi-click:');
