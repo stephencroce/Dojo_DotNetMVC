@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <select size="4" id="testList">
+        <option value="1" data-title="This is item 1." data-content="Lots of stuff to say 1" style="color:red;">Item 1</option>
+        <option value="2" data-title="This is item 2." data-content="Lots of stuff to say 2" style="color:green;">Item 2</option>
+        <option value="3" data-title="This is item 3." data-content="Lots of stuff to say 3" style="">Item 3</option>
+        <option value="4" data-title="Blah blah blah" data-content="<b>Lots of stuff to say 4</b><img src='http://25.media.tumblr.com/tumblr_m46vd82Jsi1qemxfbo1_500.jpg' >" style="color:orange;">Item 4</option>
+    </select>
+
+    <script>
+        //http://stackoverflow.com/questions/13126144/twitter-bootstrap-popovers-and-tooltips-on-listbox-option-elements-showing-in-th
+
+        var $e,
+            index,
+            optionHeight = 20,
+            isWindows = navigator.platform.toLowerCase().indexOf('win') > -1;
+
+        $("#testList").on('mouseleave', function (e) {
+            $('#testList').popover('destroy');
+        });
+
+        $("#testList").on('mousemove', function (e) {
+            if (!isWindows) {         
+                var $e = $(e.target);
+            } else {
+                var newIndex = Math.floor(e.clientY / optionHeight);
+                if (newIndex === index) return;
+                index = newIndex;
+                $e = $(this).find('option:eq(' + index + ')');
+            }
+            if ($e.is('option')) {
+                $('#testList').popover('destroy');
+                $("#testList").popover({
+                    trigger: 'manual',
+                    placement: 'right',
+                    title: $e.attr("data-title"),
+                    content: $e.attr("data-content")
+                }).popover('show');
+            }
+        });
+    </script>
+</body>
+</html>

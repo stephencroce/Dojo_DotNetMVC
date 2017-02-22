@@ -222,6 +222,7 @@
     <Content Include="Crap\AngularCrap\images\SharkEatingShark.jpg" />
     <Content Include="Crap\BootstrapCrap\BootstrapCrap.html" />
     <Content Include="Crap\BootstrapCrap\BootstrapCrap-CodeSchool.html" />
+    <Content Include="Crap\BootstrapCrap\PopOverCrap.html" />
     <Content Include="Crap\crap.html" />
     <Content Include="Crap\HTCCrap\HTCCrap.html" />
     <Content Include="Crap\JavaScriptCrap\JavaScriptCrap.html" />

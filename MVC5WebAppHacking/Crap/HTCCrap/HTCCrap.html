@@ -13,6 +13,10 @@
         http://samples.msdn.microsoft.com/workshop/samples/author/behaviors/hilite.htc*/
         #stupidHTC LI {
             color: lightblue;
+            /*behavior: url(StupidHTC.htc);*/
+        }
+        .stupidHTC LI {
+            color: darkseagreen;
             behavior: url(StupidHTC.htc);
         }
     </style>
@@ -31,6 +35,17 @@
                 <li>HTML Authoring </li>
                 <li>Dynamic HTML </li>
                 <li STYLE="behavior:url(StupidHTC.htc)">inline example</li>
+            </ul>
+        </DIV>
+        <DIV class="stupidHTC">
+            <div style="text-align:center; color:darkblue; font-weight:bolder;">HTC Crap - IMPORTANT - IT ONLY WORKS IN IE5-IE9-So you have to use the ie emulator</div>
+            <P>
+               This is a test for css targeting practice
+            </P>
+            <ul>
+                <li class="fuck" dumbass="donkey">Donald Trump</li>
+                <li>Hillary Clinton</li>
+                <li STYLE="behavior:url(StupidHTC.htc)">Jill Stein</li>
             </ul>
         </DIV>
         <hr />

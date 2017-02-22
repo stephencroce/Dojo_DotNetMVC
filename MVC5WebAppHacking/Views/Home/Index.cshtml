@@ -25,7 +25,9 @@
         behavior: url(/Crap/HTCCrap/StupidHTC.htc);
     }
 </style>
-
+<div style="border:groove green 1px">
+    <button onclick="tfsStupidity();">tfs stupidness</button>
+</div>
 <div style="border:dotted blue 2px; padding:5px;">
     <div>
         disable mutli-click of these buttons implemented as an html button:
@@ -253,4 +255,41 @@ I added this as a test to git
     console.log('buttonsToDisable:' + theButtons);
     console.log('script sees the following ' + theButtons.length + ' buttons on which to disable multi-click:');
     enumerateButtonIds(theButtons);
+</script>
+<script id="tfsStupidnessScript" type="text/javascript">
+    //http://stackoverflow.com/questions/36072327/tfs-2015-rest-api-authentication
+    function tfsStupidity() {
+        window.alert('tfs stupidness - start');
+        var self = this;
+        self.tasksURI = 'http://ntsvrtfs:8080/tfs/DefaultCollection/Claimslink/_apis/build/builds?api-version=2.0';
+        self.username = "SteveCro"; //basic username so no domain here.
+        self.password = "CEINetwork2017~";
+
+        self.ajax = function (uri, method, data) {
+            var request = {
+                url: uri,
+                type: method,
+                contentType: "application/json",
+                accepts: "application/json",
+                cache: false,
+                dataType: 'json',
+                data: JSON.stringify(data),
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(self.username + ":" + self.password));
+                },
+                error: function (jqXHR) {
+                    console.log("ajax error " + jqXHR.status);
+                }
+            };
+            return $.ajax(request);
+        }
+
+        self.ajax(self.tasksURI, 'GET').done(function (data) {
+
+            //alert(data);
+            console.log("HERE IS YOUR FREAKING TFS DATA:" + JSON.stringify(data));
+
+        });
+        window.alert('tfs stupidness - end');
+    }
 </script>

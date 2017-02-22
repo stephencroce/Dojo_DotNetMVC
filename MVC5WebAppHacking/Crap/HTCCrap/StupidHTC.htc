@@ -3,6 +3,7 @@
     <!--this is shit that only ie 5-9 understands-->
    <PUBLIC:ATTACH EVENT="onmouseover" ONEVENT="Hilite()" />
    <PUBLIC:ATTACH EVENT="onmouseout"  ONEVENT="Restore()"  />
+   <PUBLIC:ATTACH EVENT="onclick" ONEVENT="disableMultiClick(this)" />
 
    <SCRIPT LANGUAGE="JScript">
 
@@ -37,6 +38,19 @@
            runtimeStyle.letterSpacing = normalSpacing;
        }
 
+       function disableMultiClick(item) {
+           console.log(item);
+           console.log(item.className);
+           console.log(item.getAttribute("dumbass"));
+
+           var dumbass = item.getAttribute("dumbass");
+           if (dumbass == 'donkey') {
+               item.innerText = 'submitting...';
+               item.disabled = 'disabled';
+               window.alert('hi');
+           }
+
+       }
    </SCRIPT>
 </public:component>
 
