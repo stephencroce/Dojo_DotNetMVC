@@ -237,4 +237,6 @@ C:\git\MVC5WebAppHacking\MVC5WebAppHacking\bin\Microsoft.Owin.Security.Twitter.x
 C:\git\MVC5WebAppHacking\MVC5WebAppHacking\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\git\MVC5WebAppHacking\MVC5WebAppHacking\obj\Debug\WebApplicationHack1.dll
 C:\git\MVC5WebAppHacking\MVC5WebAppHacking\obj\Debug\WebApplicationHack1.pdb
+C:\git\MVC5WebAppHacking\MVC5WebAppHacking\bin\ClassLibraryHack.dll
+C:\git\MVC5WebAppHacking\MVC5WebAppHacking\bin\ClassLibraryHack.pdb
 C:\git\MVC5WebAppHacking\MVC5WebAppHacking\obj\Debug\MVC5WebAppHacking.csprojResolveAssemblyReference.cache

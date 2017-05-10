@@ -17,8 +17,10 @@ namespace WebApplicationHack1.Controllers
         public ActionResult About()
         {
             //System.Threading.Thread.Sleep(25000);
-            ViewBag.Message = "Your application description page.  This is the viewbag";
-            
+            ClassLibraryHack.StupidMath stupidMath = new ClassLibraryHack.StupidMath();
+            //ViewBag.Message = "Your application description page.  This is the viewbag";
+            ViewBag.Message = "Your application description page.  This is the viewbag :: " + stupidMath.Puke() + " :: " + stupidMath.DivideTwoDumbIntegers(45,9) + " :: ";
+
 
             return View();
         }
