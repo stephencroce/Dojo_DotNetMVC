@@ -24,12 +24,13 @@
     
 
 </head>
-<body>this is C:\git\MVC5WebAppHacking\MVC5WebAppHacking\Views\Shared\_Layout.cshtml
+<body>
+    this is C:\git\Dojo_DotNetMVC\Dojo_DotNetMVC\Views\Shared\_Layout.cshtml
     <script type="text/javascript">
-    $(document).ready(function () {
-        $("#txtStartDate").datepicker();
-        $("#txtEndDate").datepicker();
-    });
+        $(document).ready(function () {
+            $("#txtStartDate").datepicker();
+            $("#txtEndDate").datepicker();
+        });
     </script>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -54,9 +55,10 @@
     </div>
     <div class="container body-content">
         <div style="color:red;">RenderBody() Start</div>
-            @RenderBody()
-        <div style="color:red;">RenderBody() End
-    </div>
+        @RenderBody()
+        <div style="color:red;">
+            RenderBody() End
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
