@@ -6,3 +6,5 @@
 # But not these files/directories
 !Content/
 !.gitignore
+/.vs
+/MVC5WebAppHacking/obj/Debug
