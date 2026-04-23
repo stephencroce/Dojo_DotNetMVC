@@ -8,3 +8,6 @@
 !.gitignore
 /.vs
 /MVC5WebAppHacking/obj/Debug
+/Dojo_DotNetMVC/obj/Debug/Dojo_DotNetMVC.csproj.AssemblyReference.cache
+/Dojo_DotNetMVC/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/Dojo_DotNetMVC/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs
