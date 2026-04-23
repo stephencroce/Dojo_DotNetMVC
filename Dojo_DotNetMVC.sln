@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC5WebAppHacking", "MVC5WebAppHacking\MVC5WebAppHacking.csproj", "{48D4760C-4B25-43ED-9B54-D092C293AAF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dojo_DotNetMVC", "Dojo_DotNetMVC\Dojo_DotNetMVC.csproj", "{48D4760C-4B25-43ED-9B54-D092C293AAF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EB39BC2-5216-44BE-9376-29B76AA5A783}
 	EndGlobalSection
 EndGlobal
