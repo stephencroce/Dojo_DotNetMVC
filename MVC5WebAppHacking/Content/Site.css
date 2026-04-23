@@ -22,3 +22,54 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Sidebar navigation styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 220px;
+    background: #1565c0;
+    color: #fff;
+    padding-top: 50px;
+    z-index: 1000;
+}
+.sidebar-header {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.sidebar-brand, .sidebar-brand:visited {
+    color: #fff;
+    text-decoration: none;
+}
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar-nav li {
+    width: 100%;
+}
+.sidebar-nav a {
+    display: block;
+    color: #fff !important;
+    background: none;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #1976d2;
+    transition: background 0.2s;
+}
+.sidebar-nav a:hover, .sidebar-nav a:focus {
+    background: #1976d2;
+    color: #fff;
+}
+.sidebar-login {
+    padding: 20px;
+}
+
+/* Main content area adjustment */
+.main-content {
+    margin-left: 220px;
+}
